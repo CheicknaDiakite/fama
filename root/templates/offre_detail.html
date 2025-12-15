@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>{{ offre.libelle }}</h2>
+  <p>Catégorie: {{ offre.categorie.libelle }}</p>
+
+  <h4 class="mt-3">Formulaire de candidature</h4>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Envoyer la candidature</button>
+  </form>
+</div>
+
+{% endblock %}
