@@ -8,7 +8,58 @@
   <h4 class="mt-3">Formulaire de candidature</h4>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <div class="mb-3">
+      {{ form.diplome.label_tag }}
+      {{ form.diplome }}
+      {% if form.diplome.errors %}<div class="text-danger">{{ form.diplome.errors }}</div>{% endif %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.nom.label_tag }}
+      {{ form.nom }}
+      {% if form.nom.errors %}<div class="text-danger">{{ form.nom.errors }}</div>{% endif %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.prenom.label_tag }}
+      {{ form.prenom }}
+      {% if form.prenom.errors %}<div class="text-danger">{{ form.prenom.errors }}</div>{% endif %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.lieu_n.label_tag }}
+      {{ form.lieu_n }}
+      {% if form.lieu_n.errors %}<div class="text-danger">{{ form.lieu_n.errors }}</div>{% endif %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.zone.label_tag }}
+      {{ form.zone }}
+      {% if form.zone.errors %}<div class="text-danger">{{ form.zone.errors }}</div>{% endif %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.image.label_tag }}
+      {{ form.image }}
+      {% if form.image.errors %}<div class="text-danger">{{ form.image.errors }}</div>{% endif %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.carte_i.label_tag }}
+      {{ form.carte_i }}
+      {% if form.carte_i.errors %}<div class="text-danger">{{ form.carte_i.errors }}</div>{% endif %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.diplome_pdf.label_tag }}
+      {{ form.diplome_pdf }}
+      {% if form.diplome_pdf.errors %}<div class="text-danger">{{ form.diplome_pdf.errors }}</div>{% endif %}
+    </div>
+
     <button type="submit" class="btn btn-success">Envoyer la candidature</button>
   </form>
 </div>

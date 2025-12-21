@@ -36,7 +36,8 @@ class Postule(models.Model):
 
     nom = models.CharField(max_length=500, null=False, blank=False)
     prenom = models.CharField(max_length=500, null=False, blank=False)
-    lieu_n = models.CharField(max_length=500, null=False, blank=False)
+    # Date de naissance / lieu_n converti en DateField (stocke une date)
+    lieu_n = models.DateField(null=True, blank=True)
     zone = models.CharField(max_length=500, null=False, blank=False)
     image = models.ImageField(null=True, blank=True)
 

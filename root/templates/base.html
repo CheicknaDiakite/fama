@@ -15,10 +15,56 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FW2RPVP5G9"></script>
 
+    <link rel="stylesheet" href="{% static 'dist/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/et-line-font/et-line-font.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/themify-icons/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/plugins/hmenu/ace-responsive-menu.css' %}">
 
 </head>
 
 <body>
+
+<div class="wrapper boxed-wrapper">
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="#" class="">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+
+    <!-- logo for regular state and mobile devices -->
+    <img style=" width: 100%; height: 50px;" src="{% static 'dist/img/img.png' %}" alt="">
+    <!-- Header Navbar: style can be found in header.less -->
+    
+  </header>
+  <!-- Main Nav -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">F A M A</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {# Boucle sur les catégories et affiche chaque catégorie comme un dropdown #}
+          {% for categorie in categories %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="cat-{{ categorie.uuid }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ categorie.libelle }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="cat-{{ categorie.uuid }}">
+              {% for sous in categorie.sous_categorie %}
+                <li><a class="dropdown-item" href="{% url 'souscategorie_offres' sous.uuid %}">{{ sous.libelle }}</a></li>
+              {% empty %}
+                <li><span class="dropdown-item disabled">Aucune sous-catégorie</span></li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+      
+      </div>
+    </div>
+  </nav>
 
   <main id="main">
 

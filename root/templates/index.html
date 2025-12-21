@@ -3,35 +3,6 @@
 {% load static %}
 
 {% block content %}
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">F A M A</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {# Boucle sur les catégories et affiche chaque catégorie comme un dropdown #}
-        {% for categorie in categories %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="cat-{{ categorie.uuid }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {{ categorie.libelle }}
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="cat-{{ categorie.uuid }}">
-            {% for sous in categorie.sous_categorie %}
-              <li><a class="dropdown-item" href="{% url 'souscategorie_offres' sous.uuid %}">{{ sous.libelle }}</a></li>
-            {% empty %}
-              <li><span class="dropdown-item disabled">Aucune sous-catégorie</span></li>
-            {% endfor %}
-          </ul>
-        </li>
-        {% endfor %}
-      </ul>
-      
-    </div>
-  </div>
-</nav>
-
 <div class="container mt-4">
   <h2>Toutes les offres</h2>
   {% if offres %}
